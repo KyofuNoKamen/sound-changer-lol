@@ -85,7 +85,7 @@ static void printTest()
     printf("test");
 }
 
-static void openFile(char* pathToDir)
+static void openFile(char* pathToDir, char* wpkName)
 {
     FILE *file;
     
@@ -151,5 +151,9 @@ static void openFile(char* pathToDir)
         printf("\n-----------------Closed WEM file-----------------\n");
     }
 
-    write_wpk_file(wemList, "test.wpk");
+    char* tempName;
+    strcpy(tempName, wpkName);
+    strcat(tempName, ".wpk");
+
+    write_wpk_file(wemList, tempName);
 }

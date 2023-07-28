@@ -1848,6 +1848,7 @@ static const char __pyx_k_test[] = "test";
 static const char __pyx_k_text[] = "text";
 static const char __pyx_k_test_2[] = "__test__";
 static const char __pyx_k_wemList[] = "wemList";
+static const char __pyx_k_wpkName[] = "wpkName";
 static const char __pyx_k_wemfiles[] = "wemfiles";
 static const char __pyx_k_outputPath[] = "outputPath";
 static const char __pyx_k_wpk_convert[] = "wpk_convert";
@@ -1860,7 +1861,7 @@ static const char __pyx_k_cython_wrapper_toWPKConverterWra[] = "cython_wrapper\\
 /* #### Code section: decls ### */
 static PyObject *__pyx_pf_21toWPKConverterWrapper_wpk_convert(CYTHON_UNUSED PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v_wemList, PyObject *__pyx_v_outputPath); /* proto */
 static PyObject *__pyx_pf_21toWPKConverterWrapper_2test(CYTHON_UNUSED PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v_text); /* proto */
-static PyObject *__pyx_pf_21toWPKConverterWrapper_4fromWemToWPK(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_path); /* proto */
+static PyObject *__pyx_pf_21toWPKConverterWrapper_4fromWemToWPK(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_path, PyObject *__pyx_v_wpkName); /* proto */
 /* #### Code section: late_includes ### */
 /* #### Code section: module_state ### */
 typedef struct {
@@ -1908,6 +1909,7 @@ typedef struct {
   PyObject *__pyx_n_s_toWPKConverterWrapper;
   PyObject *__pyx_n_s_wemList;
   PyObject *__pyx_n_s_wemfiles;
+  PyObject *__pyx_n_s_wpkName;
   PyObject *__pyx_n_s_wpk_convert;
   PyObject *__pyx_tuple_;
   PyObject *__pyx_tuple__3;
@@ -1973,6 +1975,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_toWPKConverterWrapper);
   Py_CLEAR(clear_module_state->__pyx_n_s_wemList);
   Py_CLEAR(clear_module_state->__pyx_n_s_wemfiles);
+  Py_CLEAR(clear_module_state->__pyx_n_s_wpkName);
   Py_CLEAR(clear_module_state->__pyx_n_s_wpk_convert);
   Py_CLEAR(clear_module_state->__pyx_tuple_);
   Py_CLEAR(clear_module_state->__pyx_tuple__3);
@@ -2016,6 +2019,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_toWPKConverterWrapper);
   Py_VISIT(traverse_module_state->__pyx_n_s_wemList);
   Py_VISIT(traverse_module_state->__pyx_n_s_wemfiles);
+  Py_VISIT(traverse_module_state->__pyx_n_s_wpkName);
   Py_VISIT(traverse_module_state->__pyx_n_s_wpk_convert);
   Py_VISIT(traverse_module_state->__pyx_tuple_);
   Py_VISIT(traverse_module_state->__pyx_tuple__3);
@@ -2071,6 +2075,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_toWPKConverterWrapper __pyx_mstate_global->__pyx_n_s_toWPKConverterWrapper
 #define __pyx_n_s_wemList __pyx_mstate_global->__pyx_n_s_wemList
 #define __pyx_n_s_wemfiles __pyx_mstate_global->__pyx_n_s_wemfiles
+#define __pyx_n_s_wpkName __pyx_mstate_global->__pyx_n_s_wpkName
 #define __pyx_n_s_wpk_convert __pyx_mstate_global->__pyx_n_s_wpk_convert
 #define __pyx_tuple_ __pyx_mstate_global->__pyx_tuple_
 #define __pyx_tuple__3 __pyx_mstate_global->__pyx_tuple__3
@@ -2081,7 +2086,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 /* #### Code section: module_code ### */
 
 /* "toWPKConverterWrapper.pyx":21
- *     void openFile(char* pathToFile)
+ *     void openFile(char* pathToDir, char* wpkName)
  * 
  * def wpk_convert(wemList, outputPath):             # <<<<<<<<<<<<<<
  *     cdef AudioDataList* wemfiles
@@ -2192,7 +2197,7 @@ static PyObject *__pyx_pf_21toWPKConverterWrapper_wpk_convert(CYTHON_UNUSED PyOb
   write_wpk_file(__pyx_v_wemfiles, __pyx_t_1);
 
   /* "toWPKConverterWrapper.pyx":21
- *     void openFile(char* pathToFile)
+ *     void openFile(char* pathToDir, char* wpkName)
  * 
  * def wpk_convert(wemList, outputPath):             # <<<<<<<<<<<<<<
  *     cdef AudioDataList* wemfiles
@@ -2300,7 +2305,7 @@ static PyObject *__pyx_pf_21toWPKConverterWrapper_2test(CYTHON_UNUSED PyObject *
  * def test(text):
  *     printTest()             # <<<<<<<<<<<<<<
  * 
- * def fromWemToWPK(path):
+ * def fromWemToWPK(path, wpkName):
  */
   printTest();
 
@@ -2322,8 +2327,8 @@ static PyObject *__pyx_pf_21toWPKConverterWrapper_2test(CYTHON_UNUSED PyObject *
 /* "toWPKConverterWrapper.pyx":29
  *     printTest()
  * 
- * def fromWemToWPK(path):             # <<<<<<<<<<<<<<
- *     openFile(path)
+ * def fromWemToWPK(path, wpkName):             # <<<<<<<<<<<<<<
+ *     openFile(path, wpkName)
  */
 
 /* Python wrapper */
@@ -2343,6 +2348,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ) {
   PyObject *__pyx_v_path = 0;
+  PyObject *__pyx_v_wpkName = 0;
   #if !CYTHON_METH_FASTCALL
   CYTHON_UNUSED const Py_ssize_t __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
   #endif
@@ -2354,11 +2360,13 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("fromWemToWPK (wrapper)", 0);
   {
-    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_path,0};
-    PyObject* values[1] = {0};
+    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_path,&__pyx_n_s_wpkName,0};
+    PyObject* values[2] = {0,0};
     if (__pyx_kwds) {
       Py_ssize_t kw_args;
       switch (__pyx_nargs) {
+        case  2: values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
         case  1: values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
         CYTHON_FALLTHROUGH;
         case  0: break;
@@ -2370,37 +2378,47 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_path)) != 0)) kw_args--;
         else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 29, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_wpkName)) != 0)) kw_args--;
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 29, __pyx_L3_error)
+        else {
+          __Pyx_RaiseArgtupleInvalid("fromWemToWPK", 1, 2, 2, 1); __PYX_ERR(0, 29, __pyx_L3_error)
+        }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
         if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "fromWemToWPK") < 0)) __PYX_ERR(0, 29, __pyx_L3_error)
       }
-    } else if (unlikely(__pyx_nargs != 1)) {
+    } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
+      values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
     }
     __pyx_v_path = values[0];
+    __pyx_v_wpkName = values[1];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("fromWemToWPK", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 29, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("fromWemToWPK", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 29, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("toWPKConverterWrapper.fromWemToWPK", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_21toWPKConverterWrapper_4fromWemToWPK(__pyx_self, __pyx_v_path);
+  __pyx_r = __pyx_pf_21toWPKConverterWrapper_4fromWemToWPK(__pyx_self, __pyx_v_path, __pyx_v_wpkName);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_21toWPKConverterWrapper_4fromWemToWPK(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_path) {
+static PyObject *__pyx_pf_21toWPKConverterWrapper_4fromWemToWPK(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_path, PyObject *__pyx_v_wpkName) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   char *__pyx_t_1;
+  char *__pyx_t_2;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -2408,17 +2426,18 @@ static PyObject *__pyx_pf_21toWPKConverterWrapper_4fromWemToWPK(CYTHON_UNUSED Py
 
   /* "toWPKConverterWrapper.pyx":30
  * 
- * def fromWemToWPK(path):
- *     openFile(path)             # <<<<<<<<<<<<<<
+ * def fromWemToWPK(path, wpkName):
+ *     openFile(path, wpkName)             # <<<<<<<<<<<<<<
  */
   __pyx_t_1 = __Pyx_PyObject_AsWritableString(__pyx_v_path); if (unlikely((!__pyx_t_1) && PyErr_Occurred())) __PYX_ERR(0, 30, __pyx_L1_error)
-  openFile(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyObject_AsWritableString(__pyx_v_wpkName); if (unlikely((!__pyx_t_2) && PyErr_Occurred())) __PYX_ERR(0, 30, __pyx_L1_error)
+  openFile(__pyx_t_1, __pyx_t_2);
 
   /* "toWPKConverterWrapper.pyx":29
  *     printTest()
  * 
- * def fromWemToWPK(path):             # <<<<<<<<<<<<<<
- *     openFile(path)
+ * def fromWemToWPK(path, wpkName):             # <<<<<<<<<<<<<<
+ *     openFile(path, wpkName)
  */
 
   /* function exit code */
@@ -2465,6 +2484,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_toWPKConverterWrapper, __pyx_k_toWPKConverterWrapper, sizeof(__pyx_k_toWPKConverterWrapper), 0, 0, 1, 1},
     {&__pyx_n_s_wemList, __pyx_k_wemList, sizeof(__pyx_k_wemList), 0, 0, 1, 1},
     {&__pyx_n_s_wemfiles, __pyx_k_wemfiles, sizeof(__pyx_k_wemfiles), 0, 0, 1, 1},
+    {&__pyx_n_s_wpkName, __pyx_k_wpkName, sizeof(__pyx_k_wpkName), 0, 0, 1, 1},
     {&__pyx_n_s_wpk_convert, __pyx_k_wpk_convert, sizeof(__pyx_k_wpk_convert), 0, 0, 1, 1},
     {0, 0, 0, 0, 0, 0, 0}
   };
@@ -2481,7 +2501,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
   /* "toWPKConverterWrapper.pyx":21
- *     void openFile(char* pathToFile)
+ *     void openFile(char* pathToDir, char* wpkName)
  * 
  * def wpk_convert(wemList, outputPath):             # <<<<<<<<<<<<<<
  *     cdef AudioDataList* wemfiles
@@ -2507,13 +2527,13 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   /* "toWPKConverterWrapper.pyx":29
  *     printTest()
  * 
- * def fromWemToWPK(path):             # <<<<<<<<<<<<<<
- *     openFile(path)
+ * def fromWemToWPK(path, wpkName):             # <<<<<<<<<<<<<<
+ *     openFile(path, wpkName)
  */
-  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_n_s_path); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 29, __pyx_L1_error)
+  __pyx_tuple__5 = PyTuple_Pack(2, __pyx_n_s_path, __pyx_n_s_wpkName); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
-  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cython_wrapper_toWPKConverterWra, __pyx_n_s_fromWemToWPK, 29, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 29, __pyx_L1_error)
+  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cython_wrapper_toWPKConverterWra, __pyx_n_s_fromWemToWPK, 29, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -2880,7 +2900,7 @@ if (!__Pyx_RefNanny) {
   #endif
 
   /* "toWPKConverterWrapper.pyx":21
- *     void openFile(char* pathToFile)
+ *     void openFile(char* pathToDir, char* wpkName)
  * 
  * def wpk_convert(wemList, outputPath):             # <<<<<<<<<<<<<<
  *     cdef AudioDataList* wemfiles
@@ -2906,8 +2926,8 @@ if (!__Pyx_RefNanny) {
   /* "toWPKConverterWrapper.pyx":29
  *     printTest()
  * 
- * def fromWemToWPK(path):             # <<<<<<<<<<<<<<
- *     openFile(path)
+ * def fromWemToWPK(path, wpkName):             # <<<<<<<<<<<<<<
+ *     openFile(path, wpkName)
  */
   __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_21toWPKConverterWrapper_5fromWemToWPK, 0, __pyx_n_s_fromWemToWPK, NULL, __pyx_n_s_toWPKConverterWrapper, __pyx_d, ((PyObject *)__pyx_codeobj__6)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);

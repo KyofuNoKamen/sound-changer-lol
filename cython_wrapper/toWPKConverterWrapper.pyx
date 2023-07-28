@@ -16,7 +16,7 @@ ctypedef STATIC_LIST AudioDataList
 cdef extern from "toWPKConverter.c":
     void write_wpk_file(AudioDataList* wemFiles, char* outputPath)
     void printTest()
-    void openFile(char* pathToFile)
+    void openFile(char* pathToDir, char* wpkName)
 
 def wpk_convert(wemList, outputPath):
     cdef AudioDataList* wemfiles
@@ -26,5 +26,5 @@ def wpk_convert(wemList, outputPath):
 def test(text):
     printTest()
 
-def fromWemToWPK(path):
-    openFile(path)
+def fromWemToWPK(path, wpkName):
+    openFile(path, wpkName)
